@@ -3,176 +3,251 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/background"
+    android:fillViewport="true"
     tools:context="com.github.uiautomator.MainActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:padding="@dimen/spacing_medium">
 
+        <!-- App Header -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="UIAutomator Server"
+            android:textSize="20sp"
+            android:textColor="@color/text_primary"
+            android:textStyle="bold"
+            android:layout_marginBottom="@dimen/spacing_medium" />
+
+        <!-- Status Section -->
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
+            style="@style/CardView"
+            android:orientation="vertical"
+            android:padding="@dimen/card_padding">
+
             <TextView
-                android:id="@+id/uiautomator_status"
-                style="@style/LeftTitle"
-                android:layout_width="wrap_content"
+                style="@style/HeaderText"
+                android:text="@string/monitor_service_title" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/monitor_service_title"
-                android:textStyle="bold" />
-            <TextView
-                android:id="@+id/uiautomator_mode"
-                style="@style/LeftTitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-        </LinearLayout>
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Status:"
+                    android:textSize="14sp"
+                    android:textColor="@color/text_secondary" />
 
-            <TextView
-                style="@style/LeftTitle"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:text="@string/shot_cut"
-                android:textStyle="bold" />
+                <TextView
+                    android:id="@+id/uiautomator_status"
+                    style="@style/StatusBadge"
+                    android:background="@drawable/status_badge_active"
+                    android:text="Active" />
+            </LinearLayout>
 
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <Button
-                android:id="@+id/development_settings"
-                style="@style/SelectButton"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:text="@string/develop_mode" />
-
-            <Button
-                android:id="@+id/accessibility"
-                style="@style/SelectButton"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:text="@string/barrier_free" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <Button
-                android:id="@+id/btn_identify"
-                style="@style/SelectButton"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:text="@string/identify" />
-
-            <Button
-                android:id="@+id/btn_finish"
-                style="@style/SelectButton"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:text="@string/quit" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <Button
-                style="@style/SelectButton"
-                android:layout_width="0dp"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:onClick="showFloatWindow"
-                android:text="Show Float Window" />
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginTop="@dimen/spacing_normal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Mode:"
+                    android:textSize="14sp"
+                    android:textColor="@color/text_secondary" />
+
+                <TextView
+                    android:id="@+id/uiautomator_mode"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="14sp"
+                    android:textColor="@color/text_primary"
+                    android:textStyle="bold" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Quick Actions -->
+        <LinearLayout
+            style="@style/CardView"
+            android:orientation="vertical"
+            android:padding="@dimen/card_padding">
+
+            <TextView
+                style="@style/HeaderText"
+                android:text="@string/shot_cut" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <Button
+                    android:id="@+id/development_settings"
+                    style="@style/SelectButton"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:text="@string/develop_mode" />
+
+                <Button
+                    android:id="@+id/accessibility"
+                    style="@style/SelectButton"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:text="@string/barrier_free" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <Button
+                    android:id="@+id/btn_identify"
+                    style="@style/SelectButton"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:text="@string/identify" />
+
+                <Button
+                    android:id="@+id/btn_finish"
+                    style="@style/SecondaryButton"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:text="@string/quit" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Float Window -->
+        <LinearLayout
+            style="@style/CardView"
+            android:orientation="vertical"
+            android:padding="@dimen/card_padding">
+
+            <TextView
+                style="@style/HeaderText"
+                android:text="Float Window" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <Button
+                    style="@style/SelectButton"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:onClick="showFloatWindow"
+                    android:text="Show" />
+
+                <Button
+                    style="@style/SecondaryButton"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:onClick="dismissFloatWindow"
+                    android:text="Dismiss" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Battery -->
+        <LinearLayout
+            style="@style/CardView"
+            android:orientation="vertical"
+            android:padding="@dimen/card_padding">
+
+            <TextView
+                style="@style/HeaderText"
+                android:text="Battery Optimization" />
 
             <Button
                 style="@style/SelectButton"
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
+                android:layout_margin="0dp"
+                android:onClick="requestIgnoreBatteryOptimizations"
+                android:text="Ignore Battery Optimization" />
+        </LinearLayout>
+
+        <!-- System Info -->
+        <LinearLayout
+            style="@style/CardView"
+            android:orientation="vertical"
+            android:padding="@dimen/card_padding">
+
+            <TextView
+                style="@style/HeaderText"
+                android:text="System Info" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:onClick="dismissFloatWindow"
-                android:text="Dismiss Float Window" />
-        </LinearLayout>
+                android:orientation="horizontal"
+                android:layout_marginBottom="@dimen/spacing_small">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/avaible_internal_storage"
+                    android:textSize="13sp"
+                    android:textColor="@color/text_secondary" />
 
-        <Button
-            style="@style/SelectButton"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:onClick="requestIgnoreBatteryOptimizations"
-            android:text="Ignore Battery Optimization" />
+                <TextView
+                    android:id="@+id/in_storage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="13sp"
+                    android:textColor="@color/text_primary"
+                    android:textStyle="bold" />
+            </LinearLayout>
 
-        <Button
-            style="@style/SelectButton"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Null" />
-    </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="@dimen/spacing_small">
 
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="IP Address"
+                    android:textSize="13sp"
+                    android:textColor="@color/text_secondary" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView
-                style="@style/LeftTitle"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:text="@string/avaible_internal_storage"
-                android:textStyle="bold"/>
-
-            <TextView
-                android:id="@+id/in_storage"
-                style="@style/LeftTitle"
-                android:layout_width="0dp"
-                android:layout_weight="1" />
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/ip_address"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="13sp"
+                    android:textColor="@color/primary"
+                    android:textStyle="bold"
+                    android:fontFamily="monospace" />
+            </LinearLayout>
 
             <TextView
-                style="@style/LeftTitle"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:text="IP Address:"
-                android:textStyle="bold"/>
-
-            <TextView
-                android:id="@+id/ip_address"
-                style="@style/LeftTitle"
-                android:layout_width="0dp"
-                android:layout_weight="1" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-            <TextView
-                style="@style/LeftTitle"
                 android:id="@+id/app_version"
-                android:layout_width="0dp"
-                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:text="version: todo"
-                android:textStyle="bold"/>
+                android:textSize="11sp"
+                android:textColor="@color/text_secondary"
+                android:gravity="center"
+                android:alpha="0.6" />
         </LinearLayout>
 
     </LinearLayout>
