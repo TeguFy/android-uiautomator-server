@@ -21,31 +21,31 @@ public class FloatView extends FrameLayout {
     private static final String TAG = "FloatView";
 
     /**
-     * 记录手指按下时在小悬浮窗的View上的横坐标的值
+     * Record the X coordinate on the small floating window view when finger is pressed
      */
     private float xInView;
 
     /**
-     * 记录手指按下时在小悬浮窗的View上的纵坐标的值
+     * Record the Y coordinate on the small floating window view when finger is pressed
      */
     private float yInView;
     /**
-     * 记录当前手指位置在屏幕上的横坐标值
+     * Record the current finger position X coordinate on the screen
      */
     private float xInScreen;
 
     /**
-     * 记录当前手指位置在屏幕上的纵坐标值
+     * Record the current finger position Y coordinate on the screen
      */
     private float yInScreen;
 
     /**
-     * 记录手指按下时在屏幕上的横坐标的值
+     * Record the X coordinate on the screen when finger is pressed
      */
     private float xDownInScreen;
 
     /**
-     * 记录手指按下时在屏幕上的纵坐标的值
+     * Record the Y coordinate on the screen when finger is pressed
      */
     private float yDownInScreen;
 
@@ -82,14 +82,14 @@ public class FloatView extends FrameLayout {
         params.packageName = context.getPackageName();
         params.width = WindowManager.LayoutParams.WRAP_CONTENT;
         params.height = WindowManager.LayoutParams.WRAP_CONTENT;
-        params.flags = WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL // 不拦截触摸事件
+        params.flags = WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL // Don't intercept touch events
                 | WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE | WindowManager.LayoutParams.FLAG_LAYOUT_INSET_DECOR
                 | WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN
-                | WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON; // 保持屏幕常亮
+                | WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON; // Keep screen always on
 
-        // Set to not touchable
-        params.flags |= WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE;
-        params.flags &= (~WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL);
+        // Remove FLAG_NOT_TOUCHABLE to allow click interactions
+        // params.flags |= WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE;
+        // params.flags &= (~WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL);
 
         int mType;
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
@@ -104,7 +104,7 @@ public class FloatView extends FrameLayout {
         params.height = minWidthHeight / 20;
         params.x = screenWidth - sideGap() - params.width;
         params.y = screenHeight / 3 * 2;
-        params.alpha = 0.2f;
+        params.alpha = 0.8f; // Increased from 0.2f for easier visibility and testing
         this.setParams(params);
         windowManager.addView(this, params);
     }
@@ -147,10 +147,11 @@ public class FloatView extends FrameLayout {
             case MotionEvent.ACTION_UP:
                 if (Math.abs(xDownInScreen - xInScreen) <= ViewConfiguration.get(getContext()).getScaledTouchSlop()
                         && Math.abs(yDownInScreen - yInScreen) <= ViewConfiguration.get(getContext()).getScaledTouchSlop()) {
-                    // 点击效果
+                    // Click effect
+                    Log.i(TAG, "Float window clicked!");
                     Toast.makeText(getContext(), "this float window is clicked", Toast.LENGTH_SHORT).show();
                 } else {
-                    //吸附效果
+                    //Anchor effect
                     anchorToSide();
                 }
                 break;
@@ -251,7 +252,7 @@ public class FloatView extends FrameLayout {
     }
 
     private void updateViewPosition() {
-        //增加移动误差
+        //Increase movement tolerance
         mParams.x = (int) (xInScreen - xInView);
         mParams.y = (int) (yInScreen - yInView);
         Log.d(TAG, "x  " + mParams.x + "   y  " + mParams.y);

@@ -15,53 +15,53 @@ import java.util.ArrayList;
 
 public class MemoryManager {
     /**
-     * 获取手机内部空间总大小
+     * Get total internal storage size
      *
-     * @return 大小，字节为单位
+     * @return Size in bytes
      */
     static public long getTotalInternalMemorySize() {
-        //获取内部存储根目录
+        //Get internal storage root directory
         File path = Environment.getDataDirectory();
-        //系统的空间描述类
+        //System's storage description class
         StatFs stat = new StatFs(path.getPath());
-        //每个区块占字节数
+        //Bytes per block
         long blockSize = stat.getBlockSize();
-        //区块总数
+        //Total number of blocks
         long totalBlocks = stat.getBlockCount();
         return totalBlocks * blockSize;
     }
 
     /**
-     * 获取手机内部可用空间大小
+     * Get available internal storage size
      *
-     * @return 大小，字节为单位
+     * @return Size in bytes
      */
     public static long getAvailableInternalMemorySize() {
         File path = Environment.getDataDirectory();
         StatFs stat = new StatFs(path.getPath());
         long blockSize = stat.getBlockSize();
-        //获取可用区块数量
+        //Get available block count
         long availableBlocks = stat.getAvailableBlocks();
         return availableBlocks * blockSize;
     }
 
     /**
-     * 判断SD卡是否可用
+     * Check if SD card is available
      *
-     * @return true : 可用<br>false : 不可用
+     * @return true : available<br>false : not available
      */
     private static boolean isSDCardEnable() {
         return Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState());
     }
 
     /**
-     * 获取手机外部总空间大小
+     * Get total external storage size
      *
-     * @return 总大小，字节为单位
+     * @return Total size in bytes
      */
     static public long getTotalExternalMemorySize() {
         if (isSDCardEnable()) {
-            //获取SDCard根目录
+            //Get SDCard root directory
             File path = Environment.getExternalStorageDirectory();
             StatFs stat = new StatFs(path.getPath());
             long blockSize = stat.getBlockSize();
@@ -78,9 +78,9 @@ public class MemoryManager {
     }
 
     /**
-     * 获取SD卡剩余空间
+     * Get SD card free space
      *
-     * @return SD卡剩余空间
+     * @return SD card free space
      */
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN_MR2)
     public static long getFreeSpace(Context context) {
@@ -97,7 +97,7 @@ public class MemoryManager {
     }
 
     /**
-     * 获取SD卡信息
+     * Get SD card info
      *
      * @return SDCardInfo
      */
@@ -118,7 +118,7 @@ public class MemoryManager {
     }
 
     /*
-    获取全部存储设备信息封装对象
+    Get all storage device info encapsulation objects
      */
     private static ArrayList<Volume> getVolume(Context context) {
         ArrayList<Volume> list_storagevolume = new ArrayList<Volume>();
@@ -158,7 +158,7 @@ public class MemoryManager {
     }
 
     /*
-     存储设备信息封装类
+     Storage device info encapsulation class
      */
     public static class Volume {
         protected String path;

@@ -23,7 +23,7 @@ public class OppoUtils {
     private static final String TAG = "OppoUtils";
 
     /**
-     * 检测 360 悬浮窗权限
+     * Check 360 floating window permission
      */
     public static boolean checkFloatWindowPermission(Context context) {
         final int version = Build.VERSION.SDK_INT;
@@ -52,7 +52,7 @@ public class OppoUtils {
     }
 
     /**
-     * oppo ROM 权限申请
+     * Oppo ROM permission request
      */
     public static void applyOppoPermission(Context context) {
         //merge request from https://github.com/zhaozepeng/FloatWindowPermission/pull/26
@@ -60,18 +60,18 @@ public class OppoUtils {
             Intent intent = new Intent();
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             //com.coloros.safecenter/.sysfloatwindow.FloatWindowListActivity
-            ComponentName comp = new ComponentName("com.coloros.safecenter", "com.coloros.safecenter.sysfloatwindow.FloatWindowListActivity");//悬浮窗管理页面
+            ComponentName comp = new ComponentName("com.coloros.safecenter", "com.coloros.safecenter.sysfloatwindow.FloatWindowListActivity");//Floating window management page
             intent.setComponent(comp);
             context.startActivity(intent);
         }
         catch(Exception e){
-            // 特殊情景
+            // Special scenario
             if (e instanceof ActivityNotFoundException) {
                 try {
                     Intent intent = new Intent();
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     //com.coloros.safecenter/.sysfloatwindow.FloatWindowListActivity
-                    ComponentName comp = new ComponentName("com.coloros.safecenter", "com.coloros.safecenter.permission.floatwindow.FloatWindowListActivity");//悬浮窗管理页面
+                    ComponentName comp = new ComponentName("com.coloros.safecenter", "com.coloros.safecenter.permission.floatwindow.FloatWindowListActivity");//Floating window management page
                     intent.setComponent(comp);
                     context.startActivity(intent);
                 } catch (Exception e1) {

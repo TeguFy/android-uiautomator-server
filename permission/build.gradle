@@ -4,11 +4,12 @@
 apply plugin: 'com.android.library'
 
 android {
+    namespace 'com.android.floatwindowpermission'
     compileSdkVersion 34
 
     defaultConfig {
         minSdkVersion 19
-        targetSdkVersion 32
+        targetSdkVersion 34
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {

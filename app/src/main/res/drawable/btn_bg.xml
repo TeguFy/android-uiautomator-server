@@ -6,5 +6,5 @@
         android:topRightRadius="5dip"
         android:bottomRightRadius="5dip"
         android:bottomLeftRadius="5dip" />
-    <!--圆角矩形白色背景-->
+    <!-- Rounded rectangle white background -->
 </shape>

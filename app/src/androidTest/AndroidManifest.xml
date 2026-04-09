@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.github.uiautomator.test">
+
+    <uses-sdk android:minSdkVersion="19" android:targetSdkVersion="34" />
+
+    <instrumentation
+        android:name="androidx.test.runner.AndroidJUnitRunner"
+        android:targetPackage="com.github.uiautomator"
+        android:label="UIAutomator Tests" />
+
+</manifest>

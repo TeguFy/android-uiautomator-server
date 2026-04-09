@@ -17,7 +17,7 @@ public class MeizuUtils {
     private static final String TAG = "MeizuUtils";
 
     /**
-     * 检测 meizu 悬浮窗权限
+     * Check Meizu floating window permission
      */
     public static boolean checkFloatWindowPermission(Context context) {
         final int version = Build.VERSION.SDK_INT;
@@ -28,7 +28,7 @@ public class MeizuUtils {
     }
 
     /**
-     * 去魅族权限申请页面
+     * Go to Meizu permission request page
      */
     public static void applyPermission(Context context){
         Intent intent = new Intent("com.meizu.safe.security.SHOW_APPSEC");

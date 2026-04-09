@@ -21,7 +21,7 @@ public class RomUtils {
     private static final String TAG = "RomUtils";
 
     /**
-     * 获取 emui 版本号
+     * Get EMUI version number
      * @return
      */
     public static double getEmuiVersion() {
@@ -37,7 +37,7 @@ public class RomUtils {
 
     private static Boolean isSony = null;
     /**
-     * 判断是否是sony
+     * Check if it's Sony
      * @return
      */
     public static boolean isSonySystem() {
@@ -50,7 +50,7 @@ public class RomUtils {
     private static Boolean isSamSung = null;
 
     /**
-     * 判断是否是三星
+     * Check if it's Samsung
      *
      * @return
      */
@@ -63,7 +63,7 @@ public class RomUtils {
 
     private static Boolean isOppo = null;
     /**
-     * 判断是否是oppo
+     * Check if it's Oppo
      * @return
      */
     public static boolean isOppoSystem() {
@@ -100,7 +100,7 @@ public class RomUtils {
 
 
     /**
-     * 获取小米 rom 版本号，获取失败返回 -1
+     * Get Xiaomi ROM version number, return -1 if failed
      *
      * @return miui rom version code, if fail , return -1
      */

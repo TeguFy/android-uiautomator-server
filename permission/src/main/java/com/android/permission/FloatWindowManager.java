@@ -63,7 +63,7 @@ public class FloatWindowManager {
     }
 
     public boolean checkPermission(Context context) {
-        //6.0 版本之后由于 google 增加了对悬浮窗权限的管理，所以方式就统一了
+        //After version 6.0, since Google added management for floating window permission, the method is unified
         if (Build.VERSION.SDK_INT < 23) {
             if (RomUtils.checkIsMiuiRom()) {
                 return miuiPermissionCheck(context);
@@ -107,10 +107,10 @@ public class FloatWindowManager {
     }
 
     private boolean commonROMPermissionCheck(Context context) {
-        //最新发现魅族6.0的系统这种方式不好用，天杀的，只有你是奇葩，没办法，单独适配一下
+        //Recently discovered that Meizu 6.0 system doesn't work well with this method, damn it, it's the only outlier, no choice but to adapt it separately
         if (RomUtils.checkIsMeizuRom()) {
             return meizuPermissionCheck(context);
-            // VIVO的i管家比较厉害
+            // VIVO's iManager is quite powerful
         } else if (RomUtils.isVivoSystem()) {
             return vivoPermissionCheck(context);
         } else {
@@ -147,7 +147,7 @@ public class FloatWindowManager {
     }
 
     /**
-     * 直接去申请权限
+     * Apply permission directly
      *
      * @param context
      */
@@ -166,7 +166,7 @@ public class FloatWindowManager {
                 VivoUtils.applyPermission(context);
             }
         } else {
-            // 其他的再试一次
+            // Try again for others
             if (RomUtils.checkIsMeizuRom()) {
                 MeizuUtils.applyPermission(context);
             } else if (RomUtils.isVivoSystem()) {
@@ -251,10 +251,10 @@ public class FloatWindowManager {
     }
 
     /**
-     * 通用 rom 权限申请
+     * Common ROM permission request
      */
     private void commonROMPermissionApply(final Context context) {
-        //这里也一样，魅族系统需要单独适配
+        //Same here, Meizu system needs separate adaptation
         if (RomUtils.checkIsMeizuRom()) {
             meizuROMPermissionApply(context);
         } else {
@@ -270,7 +270,7 @@ public class FloatWindowManager {
                             }
                         } else {
                             Log.d(TAG, "user manually refuse OVERLAY_PERMISSION");
-                            //需要做统计效果
+                            //Need to track statistics
                         }
                     }
                 });
@@ -289,7 +289,7 @@ public class FloatWindowManager {
     }
 
     private void showConfirmDialog(Context context, OnConfirmResult result) {
-        showConfirmDialog(context, "您的手机没有授予悬浮窗权限，请开启后再试", result);
+        showConfirmDialog(context, "Your phone has not granted floating window permission, please enable it and try again", result);
     }
 
     private void showConfirmDialog(Context context, String message, final OnConfirmResult result) {
@@ -299,14 +299,14 @@ public class FloatWindowManager {
 
         dialog = new AlertDialog.Builder(context).setCancelable(true).setTitle("")
                 .setMessage(message)
-                .setPositiveButton("现在去开启",
+                .setPositiveButton("Enable now",
                         new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 result.confirmResult(true);
                                 dialog.dismiss();
                             }
-                        }).setNegativeButton("暂不开启",
+                        }).setNegativeButton("Not now",
                         new DialogInterface.OnClickListener() {
 
                             @Override

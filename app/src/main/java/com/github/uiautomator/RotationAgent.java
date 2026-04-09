@@ -36,7 +36,7 @@ public class RotationAgent extends Thread {
                 writer.println(wm.getRotation() * 90);
                 writer.flush();
                 new Thread(() -> {
-                    // 不停的往Client输出当前的Rotation信息
+                    // Continuously output current Rotation information to Client
                     try {
                         wm.watchRotation(new WindowManagerWrapper.RotationWatcher() {
                             @Override

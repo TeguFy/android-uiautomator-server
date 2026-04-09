@@ -93,7 +93,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:onClick="showFloatWindow"
-                android:text="开启悬浮窗" />
+                android:text="Show Float Window" />
 
             <Button
                 style="@style/SelectButton"
@@ -101,7 +101,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:onClick="dismissFloatWindow"
-                android:text="关闭悬浮窗" />
+                android:text="Dismiss Float Window" />
         </LinearLayout>
 
     <LinearLayout
@@ -114,7 +114,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:onClick="requestIgnoreBatteryOptimizations"
-            android:text="忽略电池优化" />
+            android:text="Ignore Battery Optimization" />
 
         <Button
             style="@style/SelectButton"
@@ -152,7 +152,7 @@
                 style="@style/LeftTitle"
                 android:layout_width="0dp"
                 android:layout_weight="1"
-                android:text="本机IP地址:"
+                android:text="IP Address:"
                 android:textStyle="bold"/>
 
             <TextView

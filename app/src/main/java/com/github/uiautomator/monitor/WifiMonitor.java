@@ -31,7 +31,7 @@ public class WifiMonitor extends AbstractMonitor {
         this.receiver = new BroadcastReceiver() {
             @Override
             public void onReceive(Context context, Intent intent) {
-                if (WifiManager.NETWORK_STATE_CHANGED_ACTION.equals(intent.getAction())) {// 监听wifi的打开与关闭，与wifi的连接无关
+                if (WifiManager.NETWORK_STATE_CHANGED_ACTION.equals(intent.getAction())) {// Monitor wifi on/off, unrelated to wifi connection
                     int wifiState = intent.getIntExtra(WifiManager.EXTRA_WIFI_STATE, 0);
                     switch (wifiState) {
                         case WifiManager.WIFI_STATE_DISABLED:
@@ -41,12 +41,12 @@ public class WifiMonitor extends AbstractMonitor {
                             break;
                     }
                 }
-                // 监听网络连接，包括wifi和移动数据的打开和关闭,以及连接上可用的连接都会接到监听
+                // Monitor network connection, including wifi and mobile data on/off, and all available connections will be monitored
                 if (ConnectivityManager.CONNECTIVITY_ACTION.equals(intent.getAction())) {
-                    //获取联网状态的NetworkInfo对象
+                    //Get NetworkInfo object for network connection status
                     NetworkInfo info = intent.getParcelableExtra(ConnectivityManager.EXTRA_NETWORK_INFO);
                     if (info != null) {
-                        //如果当前的网络连接成功并且网络连接可用
+                        //If current network connection is successful and available
                         if (NetworkInfo.State.CONNECTED == info.getState() && info.isAvailable()) {
                             WifiManager wifi = (WifiManager) ((Service) context).getSystemService(Context.WIFI_SERVICE);
                             WifiInfo wInfo = wifi.getConnectionInfo();

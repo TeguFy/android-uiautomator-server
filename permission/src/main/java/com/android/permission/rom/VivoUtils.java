@@ -19,7 +19,7 @@ public class VivoUtils {
     private static final String TAG = "QikuUtils";
 
     /**
-     * 检测 Vivo 悬浮窗权限
+     * Check Vivo floating window permission
      */
     public static boolean checkFloatWindowPermission(Context context) {
         final int version = Build.VERSION.SDK_INT;
@@ -29,7 +29,7 @@ public class VivoUtils {
             } catch (Exception e) {
                 e.printStackTrace();
 
-                // 通常方式去检查
+                // Check via normal method
                 if (Build.VERSION.SDK_INT >= 23) {
                     try {
                         Class clazz = Settings.class;
@@ -46,7 +46,7 @@ public class VivoUtils {
     }
 
     /**
-     * 去i管家申请页面
+     * Go to iManager request page
      */
     public static void applyPermission(final Context context) {
         Intent appIntent = context.getPackageManager().getLaunchIntentForPackage("com.iqoo.secure");
@@ -57,7 +57,7 @@ public class VivoUtils {
                     ((Activity) context).runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            Toast.makeText(context, "请进入\"应用管理->权限管理->悬浮窗\"页面开启权限", Toast.LENGTH_LONG).show();
+                            Toast.makeText(context, "Please go to \"App Management->Permission Management->Floating Window\" page to enable permission", Toast.LENGTH_LONG).show();
                         }
                     });
                 }
@@ -68,7 +68,7 @@ public class VivoUtils {
                     ((Activity) context).runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            Toast.makeText(context, "请手动开启i管家，进入\"应用管理->权限管理->悬浮窗\"页面开启权限", Toast.LENGTH_LONG).show();
+                            Toast.makeText(context, "Please manually open iManager and go to \"App Management->Permission Management->Floating Window\" page to enable permission", Toast.LENGTH_LONG).show();
                         }
                     });
                 }
@@ -78,7 +78,7 @@ public class VivoUtils {
                 ((Activity) context).runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        Toast.makeText(context, "请手动开启i管家，进入\"应用管理->权限管理->悬浮窗\"页面开启权限", Toast.LENGTH_LONG).show();
+                        Toast.makeText(context, "Please manually open iManager and go to \"App Management->Permission Management->Floating Window\" page to enable permission", Toast.LENGTH_LONG).show();
                     }
                 });
             }
@@ -86,10 +86,10 @@ public class VivoUtils {
     }
 
     /**
-     * 获取悬浮窗权限状态
+     * Get floating window permission status
      *
      * @param context
-     * @return 1或其他是没有打开，0是打开，该状态的定义和{@link android.app.AppOpsManager#MODE_ALLOWED}，MODE_IGNORED等值差不多，自行查阅源码
+     * @return 1 or other means not enabled, 0 means enabled. The definition of this status is similar to {@link android.app.AppOpsManager#MODE_ALLOWED}, MODE_IGNORED, etc. Refer to source code for details
      */
     public static int getFloatPermissionStatus(Context context) {
         if (context == null) {
@@ -123,7 +123,7 @@ public class VivoUtils {
     }
 
     /**
-     * vivo比较新的系统获取方法
+     * Vivo's newer system query method
      *
      * @param context
      * @return

@@ -259,7 +259,7 @@ public class ScreenHttpServer extends NanoHTTPD {
         format.setInteger(MediaFormat.KEY_FRAME_RATE, 20); // FPS
         format.setInteger(MediaFormat.KEY_I_FRAME_INTERVAL, 10); // Frame interval, unit seconds
         MediaCodec mMediaCodec = MediaCodec.createEncoderByType(MediaFormat.MIMETYPE_VIDEO_AVC); // Output encoding
-        mMediaCodec.configure(format, null, null, MediaCodec.CONFIGURE_FLAG_ENCODE); // 配置好格式参数
+        mMediaCodec.configure(format, null, null, MediaCodec.CONFIGURE_FLAG_ENCODE); // Configure format parameters
         return mMediaCodec;
     }
 
